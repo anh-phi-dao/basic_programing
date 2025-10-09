@@ -1,6 +1,6 @@
 SRC:=source
 INC:=include
-BUILD:=build
+BUILD:=.
 CFLAG:=-c -Wall  -g
 LFLAG:= -Xlinker -Map=main.map -g
 

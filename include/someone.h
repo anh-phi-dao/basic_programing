@@ -20,6 +20,10 @@ typedef struct money
 
 typedef struct people someone_t;
 
+/**
+ * @brief: 3 types of people including "anxin", "antrom", "congnhan"
+ *          income and action are based on what kind of person are you
+ */
 struct people
 {
     income_t income;
