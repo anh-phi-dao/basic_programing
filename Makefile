@@ -1,29 +1,48 @@
-SRC:=source
+SRC:=src/%.c #usage of wildcard
 INC:=include
-BUILD:=.
-CFLAG:=-c -Wall  -g
-LFLAG:= -Xlinker -Map=main.map -g
+BUILD:=%.o
+OBJECT:=main.o someone.o
+CC:=gcc
+CFLAG:=-c -Wall  -g -save-temps
+LFLAG:= -Xlinker -Map=main.map -g -save-temps
+INC_FLAG:= -I$(INC)/
 
+#build all target
+.PHONY: all
+all: main
+	@echo "$@ program has been compiled sucessfully, you can run the program"
 
+#build relocatable object file
+$(BUILD): $(SRC) 
+	$(CC) $(CFLAG) $^ -o $@ $(INC_FLAG)
 
-$(BUILD)/main.o:$(SRC)/main.c 
-	gcc $(CFLAG) $(SRC)/main.c -o $(BUILD)/main.o -I$(INC)/ 
+#build executable file
+main: $(OBJECT)
+	$(CC) $(LFLAG)  $^ -o $@ 
+	@objdump -h main.o
+	@size main
 
-$(BUILD)/someone.o:$(SRC)/someone.c 
-	gcc $(CFLAG) $(SRC)/someone.c -o $(BUILD)/someone.o -I$(INC)/ 
-
-all: $(BUILD)/main.o $(BUILD)/someone.o
-	gcc $(LFLAG)  $^ -o main 
-	size main
-
-debug: all
+#debug command
+.PHONY: debug
+debug: main
 	gdb main
 
-excecute: all
-	./main
+#execute the program
+.PHONY: excecute
+excecute: main
+	@./main
 
-
+#clean the program and unessesary file
+.PHONY: clean
 clean:
-	rm build/*.o
-	rm main
-	rm *.txt
+	- rm *i
+	- rm *s 
+	- rm *o 
+	- rm *map
+	- rm *.txt 
+	- rm main 
+	
+
+
+
+

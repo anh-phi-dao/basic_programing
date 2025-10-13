@@ -3,3 +3,5 @@ main
 *.map
 *.o
 *.txt
+*.i
+*.s

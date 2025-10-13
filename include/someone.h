@@ -31,6 +31,9 @@ struct people
     char *(*action)(someone_t *person);
 };
 
+/**
+ * @brief: this enum is for generating random type of person
+ */
 enum
 {
     AN_XIN,
@@ -38,9 +41,12 @@ enum
     CONG_NHAN,
 };
 
+/**
+ * @brief: this enum is for returning the state of generating people process
+ */
 enum
 {
-    ERROR,
+    ERROR = -1,
     NORMAL,
     COMPLETE
 };
