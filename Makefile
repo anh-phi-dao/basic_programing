@@ -3,14 +3,15 @@ INC:=include
 BUILD:=%.o
 OBJECT:=main.o someone.o
 CC:=gcc
-CFLAG:=-c -Wall  -g -save-temps
-LFLAG:= -Xlinker -Map=main.map -g -save-temps
+TEMP_FLAG:=-save-temps
+CFLAG:=-c -Wall  -g $(TEMP_FLAG)
+LFLAG:= -Xlinker -Map=main.map -g $(TEMP_FLAG)
 INC_FLAG:= -I$(INC)/
 
 #build all target
 .PHONY: all
 all: main
-	@echo "$@ program has been compiled sucessfully, you can run the program"
+	@echo "You can run the program"
 
 #build relocatable object file
 $(BUILD): $(SRC) 
@@ -19,8 +20,9 @@ $(BUILD): $(SRC)
 #build executable file
 main: $(OBJECT)
 	$(CC) $(LFLAG)  $^ -o $@ 
-	@objdump -h main.o
+	objdump -h main.o
 	@size main
+	@echo "$@ program has been compiled sucessfully"
 
 #debug command
 .PHONY: debug
