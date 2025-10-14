@@ -27,7 +27,7 @@ main: $(OBJECT)
 #debug command
 .PHONY: debug
 debug: main
-	gdb main
+	@gdb main
 
 #execute the program
 .PHONY: excecute
