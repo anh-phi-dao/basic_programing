@@ -1,15 +1,12 @@
 SRC:=src/%.c #usage of wildcard
 INC:=include
 BUILD:=%.o
-OBJECT:=$(patsubst *o,*.c,$(SRC))
+OBJECT:=main.o someone.o
 CC:=gcc
 TEMP_FLAG:=-save-temps
 CFLAG:=-c -Wall  -g $(TEMP_FLAG)
 LFLAG:= -Xlinker -Map=main.map -g $(TEMP_FLAG)
 INC_FLAG:= -I$(INC)/
-
-print: src/*.c
-	@echo $(patsubst %.o,%.c,src/%.c)
 
 #build all target
 .PHONY: all
