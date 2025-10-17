@@ -32,41 +32,80 @@ int generate_people(someone_t *someone)
  * Purpose: generate "anxin" type of person
  * @param: someone_t *someone
  * **/
-void generate_anxin(someone_t *someone)
+int generate_anxin(someone_t *someone)
 {
     someone->type = malloc(sizeof(char) * 5);
+    if (someone->type == NULL)
+    {
+        return ERROR;
+    }
     sprintf(someone->type, "anxin");
     someone->income.informal_income = malloc(sizeof(char) * 5);
+    if (someone->income.informal_income == NULL)
+    {
+        if (someone->type != NULL)
+        {
+            free(someone->type);
+        }
+        return ERROR;
+    }
     sprintf(someone->income.informal_income, "tuytam");
     someone->income.formal_income_vnd = INFORMAL;
     someone->action = cadge;
+    return COMPLETE;
 }
 
 /**
  * Purpose: generate "antrom" type of person
  * @param: someone_t *someone
  * **/
-void generate_antrom(someone_t *someone)
+int generate_antrom(someone_t *someone)
 {
     someone->type = malloc(sizeof(char) * 6);
+    if (someone->type == NULL)
+    {
+        return ERROR;
+    }
     sprintf(someone->type, "antrom");
     someone->income.informal_income = malloc(sizeof(char) * 5);
+    if (someone->income.informal_income == NULL)
+    {
+        if (someone->type != NULL)
+        {
+            free(someone->type);
+        }
+        return ERROR;
+    }
     sprintf(someone->income.informal_income, "henxui");
     someone->income.formal_income_vnd = INFORMAL;
     someone->action = stole;
+    return COMPLETE;
 }
 
 /**
  * Purpose: generate "congnhan" type of person
  * @param: someone_t *someone
  * **/
-void generate_congnhan(someone_t *someone)
+int generate_congnhan(someone_t *someone)
 {
     someone->type = malloc(sizeof(char) * 8);
+    if (someone->type == NULL)
+    {
+        return ERROR;
+    }
     sprintf(someone->type, "congnhan");
     someone->income.informal_income = NULL;
+    if (someone->income.informal_income == NULL)
+    {
+        if (someone->type != NULL)
+        {
+            free(someone->type);
+        }
+        return ERROR;
+    }
     someone->income.formal_income_vnd = 500000;
     someone->action = work;
+    return COMPLETE;
 }
 
 /**
