@@ -29,6 +29,7 @@ struct people
     income_t income;
     char *type;
     char *(*action)(someone_t *person);
+    char state;
 };
 
 /**
@@ -52,9 +53,9 @@ enum
 };
 
 int generate_people(someone_t *someone);
-void generate_anxin(someone_t *someone);
-void generate_antrom(someone_t *someone);
-void generate_congnhan(someone_t *someone);
+int generate_anxin(someone_t *someone);
+int generate_antrom(someone_t *someone);
+int generate_congnhan(someone_t *someone);
 
 char *cadge(someone_t *person);
 char *stole(someone_t *person);
