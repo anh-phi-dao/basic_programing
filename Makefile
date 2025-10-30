@@ -1,7 +1,8 @@
 SRC:=src/%.c #usage of wildcard
 INC:=include
-BUILD:=%.o
-OBJECT:=main.o someone.o
+BUILD:=src/%.o
+SRC_LIST:=$(wildcard src/*.c)
+OBJECT:=$(SRC_LIST:src/%.c=src/%.o)
 CC:=gcc
 TEMP_FLAG:=-save-temps
 CFLAG:=-c -Wall  -g $(TEMP_FLAG)
@@ -20,7 +21,7 @@ $(BUILD): $(SRC)
 #build executable file
 main: $(OBJECT)
 	$(CC) $(LFLAG)  $^ -o $@ 
-	objdump -h main.o
+	objdump -h src/main.o
 	@size main
 	@echo "$@ program has been compiled sucessfully"
 
@@ -37,10 +38,10 @@ excecute: main
 #clean the program and unessesary file
 .PHONY: clean
 clean:
-	- rm *i
-	- rm *s 
-	- rm *o 
-	- rm *map
+	- rm src/*.i
+	- rm src/*.s 
+	- rm src/*.o 
+	- rm *.map
 	- rm *.txt 
 	- rm main 
 	
