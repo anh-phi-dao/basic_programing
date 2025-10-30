@@ -1,4 +1,5 @@
 #include "main.h"
+#include "linux/net.h"
 
 someone_t people[MAX_PEOPLE];
 
