@@ -12,6 +12,7 @@ INC_FLAG:= -I$(INC)/
 #build all target
 .PHONY: all
 all: main
+	
 	@echo "You can run the program"
 
 #build relocatable object file
@@ -41,6 +42,9 @@ clean:
 	- rm *.i
 	- rm *.s 
 	- rm *.o 
+	- rm src/*.i
+	- rm src/*.o
+	- rm src/*.s
 	- rm *.map
 	- rm *.txt 
 	- rm main 
