@@ -38,9 +38,9 @@ excecute: main
 #clean the program and unessesary file
 .PHONY: clean
 clean:
-	- rm src/*.i
-	- rm src/*.s 
-	- rm src/*.o 
+	- rm *.i
+	- rm *.s 
+	- rm *.o 
 	- rm *.map
 	- rm *.txt 
 	- rm main 
