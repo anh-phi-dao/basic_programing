@@ -26,14 +26,14 @@ int generate_people(someone_t *someone)
 
 int generate_anxin(someone_t *someone)
 {
-    someone->type = (char *)malloc(sizeof(char) * 5);
+    someone->type = (char *)malloc(sizeof(char) * 10);
     if (someone->type == NULL)
     {
         someone->state = ERROR;
         return ERROR;
     }
     sprintf(someone->type, "anxin");
-    someone->income.informal_income = (char *)malloc(sizeof(char) * 5);
+    someone->income.informal_income = (char *)malloc(sizeof(char) * 10);
     if (someone->income.informal_income == NULL)
     {
         free(someone->type);
@@ -50,14 +50,14 @@ int generate_anxin(someone_t *someone)
 
 int generate_antrom(someone_t *someone)
 {
-    someone->type = (char *)malloc(sizeof(char) * 6);
+    someone->type = (char *)malloc(sizeof(char) * 10);
     if (someone->type == NULL)
     {
         someone->state = ERROR;
         return ERROR;
     }
     sprintf(someone->type, "antrom");
-    someone->income.informal_income = (char *)malloc(sizeof(char) * 5);
+    someone->income.informal_income = (char *)malloc(sizeof(char) * 10);
     if (someone->income.informal_income == NULL)
     {
         free(someone->type);
@@ -74,7 +74,7 @@ int generate_antrom(someone_t *someone)
 
 int generate_congnhan(someone_t *someone)
 {
-    someone->type = (char *)malloc(sizeof(char) * 8);
+    someone->type = (char *)malloc(sizeof(char) * 10);
     if (someone->type == NULL)
     {
         someone->state = ERROR;
